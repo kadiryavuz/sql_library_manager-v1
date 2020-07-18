@@ -163,7 +163,6 @@ router.post("/search", (req, res, next) => {
 
 //display results with pagination
 router.get("/search-result/:page/:limit/:result", (req, res, next) => {
-    console.log("req.QUERY: ", req.query);
     const { page, limit, result } = req.params
     const { title, author, genre, year } = req.query;
 

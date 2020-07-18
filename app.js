@@ -19,14 +19,12 @@ app.use('/books', books);
 
 //error handling for not found routes
 app.use((req, res, next) => {
-    console.log("yes i redirected the error");
     let err = new Error('Not Found');
     err.status = 404;
     next(err);
 })
 
 app.use((err, req, res, next) => {
-    console.log("Error from next: ", err);
     let errData;
     let statusCode = err.status;
     switch (statusCode) {
