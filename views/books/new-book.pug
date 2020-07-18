@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  h1= title
+
+  include error
+
+  form(action="/books/new", method="post")
+    include bookForm
+    
+    a(class="button", href="/books") Cancel

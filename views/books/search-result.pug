@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+    h1= title
+        p
+            a(class="button", href="/books") Home
+
+    #books
+        if books.length > 0 
+            include book-list
+
+            .pagination
+                ul
+                    - for (var x = 1; x <= paging.pageCount; x++)
+                        
+                        li
+                            - var indicator = x
+                            - var activePage = paging.active
+                            - var pLimit = paging.limit
+                            - var pQuery = paging.query
+                            if activePage === 0 && indicator === 1
+                                a(class="active", href=`/books/search-result/${x}/${pLimit}/verified?${pQuery}`) #{x}
+                            else if activePage === indicator
+                                a(class="active", href=`/books/search-result/${x}/${pLimit}/verified?${pQuery}`) #{x}
+                            else
+                                a(class="", href=`/books/search-result/${x}/${pLimit}/verified?${pQuery}`) #{x}
+        else
+            h3 No result(s) found!
+
+//- // `/books/search-result/1/3/verified?${qString}`);

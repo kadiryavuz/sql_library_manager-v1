@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  h1= title
+  p
+    a(class="button", href="/books/new") New Book
+    
+  p
+    a(class="button", href="/books/search") Search Book
+    
+  include book-list
+
+  .pagination
+    ul
+        - for (var x = 1; x <= paging.pageCount; x++)
+            
+            li
+                - var indicator = x
+                - var activePage = paging.active
+                if activePage === 0 && indicator === 1
+                    a(class="active", href=`/books/list/${x}`) #{x}
+                else if activePage === indicator
+                    a(class="active", href=`/books/list/${x}`) #{x}
+                else
+                    a(class="", href=`/books/list/${x}`) #{x}

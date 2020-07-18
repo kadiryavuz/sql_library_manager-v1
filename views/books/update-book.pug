@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  h1= title
+
+  form(action=`/books/${book.id}`, method="post")
+    include bookForm
+
+  form(action=`/books/${book.id}/delete`, method="post", onsubmit="return confirm('Do you really want to delete this book?');")
+    include deleteBookForm
+  
